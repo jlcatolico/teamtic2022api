@@ -14,22 +14,11 @@ const busquedaVenta = async (id, callback) => {
 };
 
 const crearVenta = async (datosVenta, callback) => {
-  if (
-    Object.keys(datosVenta).includes("id_venta") &&
-    Object.keys(datosVenta).includes("nombre") &&
-    Object.keys(datosVenta).includes("apellido") &&
-    Object.keys(datosVenta).includes("correo") &&
-    Object.keys(datosVenta).includes("estado") &&
-    Object.keys(datosVenta).includes("rol")
-  ) {
-    console.log("Campos ok");
+  
     const conexion = getDB();
     await conexion.collection("ventas").insertOne(datosVenta, callback);
     console.log("Campos Insertados");
-  } else {
-    return "error campos";
-    console.log("Error en campos");
-  }
+  
 };
 
 const editarVenta = async (id, datosVenta, callback) => {
